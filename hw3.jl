@@ -89,7 +89,7 @@ function minimize(objective::Function,
         x_init -= lr * gradient[1] # Updating the gradients of the Lagrangian
 
         c1, c2 = constraints(x_init) # x is updated so I need to recompute the constraints
-        λ = max(0.0, λ + lr_λ * c1) # λ should be >=0 as specified in the slides and code examples
+        λ += max(0.0, λ + lr_λ * c1) # λ should be >=0 as specified in the slides and code examples
         μ += lr_μ * c2 # Same as λ but for μ
     end
 
